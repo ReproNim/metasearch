@@ -51,7 +51,7 @@ d3.csv('https://services.scicrunch.io/repronim/lake/cohort/metasearch.csv', func
 
     // setting up grid
     var column_keys = d3.keys(data[0]);
-    column_keys = ['project_title', 'ID', 'diagnosis', 'sex', 'age', 'location'];
+    column_keys = ['project_title', 'ID', 'diagnosis', 'sex', 'age', 'image_type', 'location'];
     var linkformatter = function(row, cell, value, columnDef, dataContext) {
         if ((value == '') || value.includes('bold')){
             return '';
@@ -210,9 +210,9 @@ d3.select("#post-data")
     if (data_brushed) {
         data = data_brushed;
     }
-    data = _.reject(data, function (x) {
-        return (x.image_type == "Functional") ? true : false;
-    });
+    //data = _.reject(data, function (x) {
+    //    return (x.image_type == "Functional") ? true : false;
+    //});
     var keys = d3.keys(data[0]);
     //var keys = ['MRIs', 'participant_id'];
     var rows = data.map(function(row) {
