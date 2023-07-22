@@ -5,7 +5,7 @@ var sortcol;
 var sortdir;
 
 // load csv file and create the chart
-d3.csv('data/phenotype_mri.csv', function (data) {
+d3.csv('https://services.scicrunch.io/repronim/lake/cohort/metasearch.csv', function (data) {
 
     // slickgrid needs each data element to have an id
     data.forEach(function (d, i) {
@@ -14,18 +14,18 @@ d3.csv('data/phenotype_mri.csv', function (data) {
     dataset = data;
 
     dimensionObj = {
-        "MRI": {"index": 0},
-        "project": {"index": 1},
+        // "MRI": {"index": 0},
+        "project_title": {"index": 1},
         "site_id": {"index": 2},
         "sex": {"index": 3},
         "diagnosis": {"index": 4},
         "age": {"index": 5},
-        "handedness": {"index": 6},
-        "full_iq": {"index": 7},
-        //"performance_iq": {"index": 8},
-        //"verbal_iq": {"index": 9},
-        "species": {"index": 11},
-        "session_count": {"index": 10}
+        "field_strength": {"index": 6},
+        "manufacturer": {"index": 7},
+        "image_type": {"index": 8},
+        "contrast_type": {"index": 9},
+        "task": {"index": 11},
+        //"session_count": {"index": 10}
     };
 
     parcoords = d3.parcoords()("#filter")
@@ -34,8 +34,7 @@ d3.csv('data/phenotype_mri.csv', function (data) {
     .mode("queue") // progressive rendering
     .rate(30)
     .margin({ top: 30, left: 0, bottom: 20, right: 0 })
-    .hideAxis(["participant_id", "id", 'MRIs',
-               'performance_iq', 'verbal_iq'])
+    .hideAxis(["ID", 'location',])
     .dimensions(dimensionObj)
     .render()
     .reorderable()
@@ -52,8 +51,8 @@ d3.csv('data/phenotype_mri.csv', function (data) {
 
     // setting up grid
     var column_keys = d3.keys(data[0]);
-    column_keys = ['project', 'site_id', 'participant_id', 'diagnosis',
-    'sex', 'age', 'MRIs'];
+    column_keys = ['project_title', 'ID', 'diagnosis',
+    'sex', 'age', 'location'];
     var linkformatter = function(row, cell, value, columnDef, dataContext) {
         if (value == ''){
             return '';
@@ -68,7 +67,7 @@ d3.csv('data/phenotype_mri.csv', function (data) {
             sorter = sorterNumeric;
         }
 
-        if (key == 'MRIs'){
+        if (key == 'location'){
             return {
                 id: key,
                 name: key,
