@@ -12,15 +12,15 @@ d3.csv('https://services.scicrunch.io/repronim/lake/cohort/metasearch.csv', func
         d.id = d.id || i;
     });
     dataset = data;
-
+    // project_title,ID,age,sex,diagnosis,field_strength2,manufacturer,image_type,contrast_type,task,location
     dimensionObj = {
         // "MRI": {"index": 0},
         "project_title": {"index": 1},
-        "site_id": {"index": 2},
+        //"site_id": {"index": 2},
         "sex": {"index": 3},
         "diagnosis": {"index": 4},
         "age": {"index": 5},
-        "field_strength": {"index": 6},
+        "field_strength2": {"index": 6},
         "manufacturer": {"index": 7},
         "image_type": {"index": 8},
         "contrast_type": {"index": 9},
@@ -51,14 +51,13 @@ d3.csv('https://services.scicrunch.io/repronim/lake/cohort/metasearch.csv', func
 
     // setting up grid
     var column_keys = d3.keys(data[0]);
-    column_keys = ['project_title', 'ID', 'diagnosis',
-    'sex', 'age', 'location'];
+    column_keys = ['project_title', 'ID', 'diagnosis', 'sex', 'age', 'location'];
     var linkformatter = function(row, cell, value, columnDef, dataContext) {
         if (value == ''){
             return '';
         }else{
             var docno = value ? value : "";
-            return '<a target="_blank" href="http://brainbox.pasteur.fr/mri/?url=' + docno + '">BrainBox</a>';
+            return '<a target="_blank" href="https://brainbox.pasteur.fr/mri/?url=' + docno + '">BrainBox</a>';
         }
     };
     var columns = column_keys.map(function (key, i) {
@@ -211,9 +210,9 @@ d3.select("#post-data")
     if (data_brushed) {
         data = data_brushed;
     }
-    data = _.reject(data, function (x) {
-        return (x.MRI == "no") ? true : false;
-    });
+    //data = _.reject(data, function (x) {
+    //    return (x.MRI == "no") ? true : false;
+    //});
     var keys = d3.keys(data[0]);
     //var keys = ['MRIs', 'participant_id'];
     var rows = data.map(function(row) {

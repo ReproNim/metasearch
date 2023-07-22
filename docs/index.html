@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>OpenNeuroLab: MetaSearch</title>
+    <title>ReproNim: MetaSearch</title>
 
     <!-- SlickGrid -->
     <link rel="stylesheet" href="lib/slickgrid/css/smoothness/jquery-ui-1.11.3.custom.css" type="text/css"/>
@@ -42,15 +42,15 @@
       <div id="title"><span class="large">MetaSearch</span></div>
       <footer>A metadata filter from
           <a target="_blank" style="text-decoration: none; color: #88c;"
-             href="http://openneu.ro/">OpenNeuroLab</a></footer>
+             href="https://repronim.org/">ReproNim</a></footer>
     </div>
     <div id="onl-buttons">
         <button id="tutorial" onclick="startIntro();">?</button>
         <button id="keep-data">Keep</button>
         <button id="exclude-data">Exclude</button>
         <button id="reset-data">Reset</button>
-        <a id="post-data"><img src="http://brainbox.pasteur.fr/img/brainbox-logo-small_noFont.svg" height="26px"/></a>
-        <a id="github" target="_blank" href="https://github.com/OpenNeuroLab/metasearch"><img src="github.svg" height="26px"/></a>
+        <a id="post-data"><img src="https://brainbox.pasteur.fr/img/brainbox-logo-small_noFont.svg" height="26px"/></a>
+        <a id="github" target="_blank" href="https://github.com/ReproNim/metasearch"><img src="github.svg" height="26px"/></a>
     </div>
 </div>
 
@@ -89,15 +89,6 @@ clipboard.on('success', function(e) {
 clipboard.on('error', function(e) {
     console.log(e);
 });
-</script>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-50078058-2', 'auto');
-  ga('send', 'pageview');
 </script>
 
 </body>
