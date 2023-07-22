@@ -53,7 +53,7 @@ d3.csv('https://services.scicrunch.io/repronim/lake/cohort/metasearch.csv', func
     var column_keys = d3.keys(data[0]);
     column_keys = ['project_title', 'ID', 'diagnosis', 'sex', 'age', 'location'];
     var linkformatter = function(row, cell, value, columnDef, dataContext) {
-        if (value == ''){
+        if ((value == '') || value.includes('bold')){
             return '';
         }else{
             var docno = value ? value.split("?")[0].replace("http://", "https://") : "";
