@@ -210,9 +210,9 @@ d3.select("#post-data")
     if (data_brushed) {
         data = data_brushed;
     }
-    //data = _.reject(data, function (x) {
-    //    return (x.MRI == "no") ? true : false;
-    //});
+    data = _.reject(data, function (x) {
+        return (x.image_type == "Functional") ? true : false;
+    });
     var keys = d3.keys(data[0]);
     //var keys = ['MRIs', 'participant_id'];
     var rows = data.map(function(row) {
