@@ -56,8 +56,8 @@ d3.csv('https://services.scicrunch.io/repronim/lake/cohort/metasearch.csv', func
         if (value == ''){
             return '';
         }else{
-            var docno = value ? value : "";
-            return '<a target="_blank" href="https://brainbox.pasteur.fr/mri/?url=' + docno + '">BrainBox</a>';
+            var docno = value ? value.split("?")[0].replace("http://", "https://") : "";
+            return '<a target="_blank" href="https://kitware.github.io/itk-vtk-viewer/app/?gradientOpacity=0.3&image=' + docno + '">ITK-VTK-Viewer</a>';
         }
     };
     var columns = column_keys.map(function (key, i) {
